@@ -8,9 +8,11 @@ import service.ClientService;
 import service.UserService;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import com.google.common.hash.Hashing;
 import com.google.gson.Gson;
 
 import beans.Admin;
@@ -61,6 +63,34 @@ public class ClientController extends HttpServlet {
 
 			cs.create(new Client(fname, lname, email, pass, recuperation, LocalDateTime.now()));
 			response.setContentType("application/json");
+
+		} else if (request.getParameter("op").equals("fpass")) {
+			String user = request.getParameter("user");
+			String pass = request.getParameter("pass");
+			String r = request.getParameter("recuperation");
+			String rec = Hashing.sha256().hashString(r, StandardCharsets.UTF_8).toString();
+			User c = cs.findByUser(user);
+			String message ="";
+			if(c != null ) {
+				if(c.getRecupertation().equals(rec) ) {
+					c.setPassword(pass);
+					cs.changePass(c);	
+					  message = "mot de passe modifier avec succes";
+
+				}
+				else{
+					  message = " reponse secrete invalide";
+					 
+				}
+			}
+			else{
+				  message = " nom d'utilisateur invalide";
+	                request.setAttribute("message", message);
+			}
+			response.setContentType("application/json");
+			Gson json = new Gson();
+			response.getWriter().write(json.toJson(message));
+			
 
 		} else if (request.getParameter("op").equals("login")) {
 			String user = request.getParameter("user");

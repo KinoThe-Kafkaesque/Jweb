@@ -25,7 +25,7 @@ public class Email {
 		Session session = Session.getDefaultInstance(props, new jakarta.mail.Authenticator() {
 			@Override
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication("username@gmail.com", "password");
+				return new PasswordAuthentication( username, password);
 			}
 		});
 

@@ -53,36 +53,27 @@
           <div class="content-wrapper full-page-wrapper d-flex align-items-center auth login-bg">
             <div class="card col-lg-4 mx-auto">
               <div class="card-body px-5 py-5">
-                <h3 class="card-title text-left mb-3">Register</h3>
+                <h3 class="card-title text-left mb-3">changer votre mot de pass</h3>
                 <form id="form" accept-charset=utf-8>
                   <div class="form-group">
-                    <label>First name</label>
-                    <input type="text" class="form-control p_input"  id="fname" onkeyup="success()" required >
-                  </div>
-                  <div class="form-group">
-                    <label>Last name</label>
-                    <input type="text" class="form-control p_input" id="lname" onkeyup="success()" required >
-                  </div>
+                   
                   <div class="form-group">
                     <label>Nom d'utilisateur</label>
-                    <input type="text" class="form-control p_input" id="email" onkeyup="success()" required >
+                    <input type="text" class="form-control p_input" id="email"  required >
                   </div>
-               
                   <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" class="form-control p_input" id="password" onkeyup="success()" required >
+                    <label>Nouveau mot de pass</label>
+                    <input type="password" class="form-control p_input" id="password"  required >
                   </div>
                   <div class="form-group">
                     <label>Reponse secret</label>
-                    <input type="text" class="form-control p_input" id="recuperation" onkeyup="success()" required >
-                  </div>
-                  <div class="form-group d-flex align-items-center justify-content-between">
+                    <input type="text" class="form-control p_input" id="recuperation"  required >
                   </div>
                   <div class="text-center">
-                    <button type = "button" onclick="register()"   class="btn btn-primary btn-block enter-btn">Register</button>
+                    <button type = "button" onclick="fpass()"   class="btn btn-primary btn-block enter-btn">Register</button>
                   </div>
               
-                  <p class="sign-up text-center">Already have an Account?<a href="./login.jsp"> Log in</a></p>
+                  <p class="sign-up text-center">page de connection <a href="./login.jsp"> Log in</a></p>
                 </form>
               </div>
             </div>
@@ -94,7 +85,7 @@
       <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->
-    <script src="js/register.js"></script>
+    <script src="js/fpass.js"></script>
     <!-- plugins:js -->
   
   </body>
