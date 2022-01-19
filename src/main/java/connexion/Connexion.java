@@ -6,9 +6,9 @@ import java.sql.SQLException;
 
 public class Connexion {
 
-    private static String login = "root";
-    private static String password = "";
-    private static String url = "jdbc:mysql://localhost/jweb";
+    private static String login = "bfb6cc87ff3c77";
+    private static String password = "bfb6cc87ff3c77";
+    private static String url = "jdbc:mysql://bfb6cc87ff3c77:8dea0359@eu-cdbr-west-02.cleardb.net/heroku_f85d4df7538d63f?reconnect=true";
     private Connection connection = null;
     private static Connexion instane;
 
