@@ -15,7 +15,7 @@ import beans.Admin;
 import beans.Client;
 import beans.User;
 import connexion.Connexion;
-import jakarta.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequest;
 
 public class UserService {
 

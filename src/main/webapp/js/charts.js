@@ -57,8 +57,9 @@ function fill(c) {
     var  values = [];
   
     for( var name in c){
-      var month = name.getUTCMonth() + 1; //months from 1-12
-      var year = name.getUTCFullYear();
+      var A = name.split("-");
+      var month = A[1]; //months from 1-12
+      var year = A[0];
       labels.push(month+"-"+year);
       values.push(c[name]);
     }

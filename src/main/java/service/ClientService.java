@@ -86,9 +86,11 @@ public class ClientService implements IDao<Client> {
 
 	@Override
 	public Client findById(int id) {
-		String sql = "select * from user";
+		String sql = "select * from user where id = ?";
 		try {
 			PreparedStatement ps = Connexion.getInstane().getConnection().prepareStatement(sql);
+			ps.setInt(1, id);
+
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
 				return new Client(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom"),

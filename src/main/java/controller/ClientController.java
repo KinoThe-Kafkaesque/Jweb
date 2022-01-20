@@ -1,9 +1,9 @@
 package controller;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import service.ClientService;
 import service.UserService;
 
@@ -98,13 +98,18 @@ public class ClientController extends HttpServlet {
 			System.out.println(pass);
 			User test = us.login(user, pass, request);
 			if (test != null) {
+				
 				request.getSession().setAttribute("fname", test.getNom());
 				request.getSession().setAttribute("lname", test.getPrenom());
-				request.getSession().setAttribute("id", test.getId());
+				request.getSession().setAttribute("id", ""+test.getId());
+				System.out.println(test.getId());
 
 				if (test instanceof Client) {
 					request.getSession().setAttribute("usertoken", "authenticated");
 					request.getSession().setAttribute("role", "client");
+					request.getSession().setAttribute("id", ""+test.getId());
+
+
 
 				} else if (test instanceof Admin) {
 					request.getSession().setAttribute("usertoken", "authenticated");

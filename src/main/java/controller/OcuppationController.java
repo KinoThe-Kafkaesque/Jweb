@@ -1,9 +1,9 @@
 package controller;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import service.AdminService;
 import service.ClientService;
 import service.CrenonService;
@@ -17,6 +17,7 @@ import java.util.List;
 import com.google.gson.Gson;
 
 import beans.Admin;
+import beans.Client;
 import beans.Occupation;
 
 /**
@@ -56,8 +57,8 @@ public class OcuppationController extends HttpServlet {
 			throws ServletException, IOException {
 		// doGet(request, response);
 		if (!request.getSession().getAttribute("role").equals("admin")) {
-			int client = (int) request.getSession().getAttribute("id");
-
+			int client =  Integer.parseInt(request.getSession().getAttribute("id").toString());
+			System.out.println(client);
 			if (request.getParameter("op").equals("addo")) {
 
 				int salle = Integer.parseInt(request.getParameter("salle"));
@@ -109,7 +110,7 @@ public class OcuppationController extends HttpServlet {
 
 			}
 		} else {
-			int admin = (int) request.getSession().getAttribute("id");
+			int admin =  Integer.parseInt(request.getSession().getAttribute("id").toString());
 			if (request.getParameter("op").equals("addo")) {
 				int salle = Integer.parseInt(request.getParameter("salle"));
 				int crenon = Integer.parseInt(request.getParameter("creneau"));

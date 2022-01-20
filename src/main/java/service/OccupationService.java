@@ -33,13 +33,15 @@ public class OccupationService implements IDao<Occupation> {
 		Crenon crenon = new CrenonService().findById(o.getCrenon().getId());
 
 		if (salle != null && crenon != null && client != null) {
-			String sql = "insert into ocuppation values (null,?, ?, ? ,? , null)";
+			String sql = "insert into ocuppation values (null,?, ?, ? ,? , ?)";
 			try {
 				PreparedStatement ps = Connexion.getInstane().getConnection().prepareStatement(sql);
 				ps.setDate(1, Date.valueOf(o.getDate()));
 				ps.setInt(2, o.getSalle().getId());
 				ps.setInt(3, o.getCrenon().getId());
 				ps.setInt(4, o.getClient().getId());
+				ps.setInt(5, 0);
+
 
 				if (ps.executeUpdate() == 1) {
 					return true;
@@ -245,7 +247,7 @@ public class OccupationService implements IDao<Occupation> {
 	}
 
 	public Map<LocalDate, Integer> monthly() {
-		Map<LocalDate, Integer> map = new LinkedHashMap<>();
+		TreeMap<LocalDate, Integer> map = new TreeMap<>();
 
 		String sql = "SELECT    YEAR (date),    MONTH(date),    COUNT(*)  FROM    ocuppation  WHERE    ( date BETWEEN DATE_SUB( CURRENT_DATE() , INTERVAL 1 YEAR) AND CURRENT_DATE() )  GROUP BY    YEAR (date),    MONTH(date)  ORDER BY    YEAR (date),    MONTH(date) DESC ";
 
@@ -254,14 +256,15 @@ public class OccupationService implements IDao<Occupation> {
 
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				map.put( LocalDate.of(rs.getInt(1), rs.getInt(2) , 0) , rs.getInt("count(*)"));
+				map.put( LocalDate.of(rs.getInt(1), rs.getInt(2) , 1) , rs.getInt("count(*)"));
 			}
 
 		} catch (SQLException e) {
 			System.out.println("findAll " + e.getMessage());
 		}
+	
+		return 		map.descendingMap();
 
-		return map;
 	}
 
 	public List<Occupation> searchClients(String o) {
