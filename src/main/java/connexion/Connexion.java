@@ -6,13 +6,14 @@ import java.sql.SQLException;
 
 public class Connexion {
 
-    private static String login = "root";
-    private static String password = "";
-    private static String url = "jdbc:mysql://localhost/jweb";
 
-//    private static String login = "bfb6cc87ff3c77";
-//    private static String password = "bfb6cc87ff3c77";
-//    private static String url = "jdbc:mysql://bfb6cc87ff3c77:8dea0359@eu-cdbr-west-02.cleardb.net/heroku_f85d4df7538d63f?reconnect=true";
+//    private static String login = "root";
+//    private static String password = "";
+//    private static String url = "jdbc:mysql://localhost/jweb";
+
+    private static String login = "z2nzomr90aw4rj4g";
+    private static String password = "ur239rkvjwa1qvmt";
+    private static String url = "jdbc:mysql://esilxl0nthgloe1y.chr7pe7iynqr.eu-west-1.rds.amazonaws.com/ux4qc2qtc8ije7s6";
     private Connection connection = null;
     private static Connexion instane;
 
