@@ -52,6 +52,9 @@
 						<configuration>
 							<artifactItems>
 								<artifactItem>
+									<warSourceDirectory>src/main/webapp</warSourceDirectory>
+									<warName>Jweb</warName>
+									<failOnMissingWebXml>false</failOnMissingWebXml>
 									<groupId>com.heroku</groupId>
 									<artifactId>webapp-runner</artifactId>
 									<version>9.0.52.1</version>
