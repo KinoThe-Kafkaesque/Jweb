@@ -10,8 +10,8 @@ function login() {
 		data: { user: user, pass: pass, op: "login" },
 		type: 'POST',
 		success: function(data, textStatus, jqXHR) {
-			location.href = 'http://localhost:8080/Jweb/Occupation.jsp';
-			//location.href ='https://occupation.herokuapp.com/Occupation.jsp';
+		//	location.href = 'http://localhost:8080/Jweb/Occupation.jsp';
+			location.href ='https://occupation.herokuapp.com/Occupation.jsp';
 		},
 		error: function(jqXHR, textStatus, errorThrown) {
 			alert(JSON.stringify(textStatus));
